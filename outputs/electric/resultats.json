@@ -1,0 +1,1125 @@
+{
+ "key": "electric",
+ "title": "Production électrique (Kaggle)",
+ "unit": "indice de production",
+ "freq": "MS",
+ "period": 12,
+ "horizon": 12,
+ "info": {
+  "n_obs": 397,
+  "n_obs_fichier": 397,
+  "freq": "MS",
+  "freq_label": "mensuelle",
+  "start": "1985-01-01 00:00:00",
+  "end": "2018-01-01 00:00:00",
+  "variables": [
+   "production"
+  ],
+  "n_missing_timestamps": 0,
+  "n_nan_target_apres_reindex": 0,
+  "n_interpolated": 0,
+  "n_invalid_target": 0,
+  "n_duplicates": 0,
+  "n_negative_clipped": 0,
+  "train_period": [
+   "1985-01-01 00:00:00",
+   "2008-01-01 00:00:00"
+  ],
+  "val_period": [
+   "2008-02-01 00:00:00",
+   "2012-12-01 00:00:00"
+  ],
+  "test_period": [
+   "2013-01-01 00:00:00",
+   "2018-01-01 00:00:00"
+  ],
+  "exog_cols": []
+ },
+ "eda": {
+  "stats": {
+   "moyenne": 88.84721763224182,
+   "ecart_type": 15.387833664730902,
+   "min": 55.3151,
+   "q25": 77.1052,
+   "mediane": 89.7795,
+   "q75": 100.5244,
+   "max": 129.4048,
+   "asymetrie": -0.07281915414558082,
+   "kurtosis": -0.7005639504294976,
+   "part_zeros": 0.0
+  },
+  "stl": {
+   "force_tendance": 0.9727037447039063,
+   "force_saison": 0.9188677692614349,
+   "pente_par_an": 1.3373038105721178,
+   "amplitude_saison": 30.54948413626773,
+   "tendance_debut": 62.19110849550154,
+   "tendance_fin": 102.37847707547621
+  },
+  "anomalies": {
+   "n": 43,
+   "part": 0.10831234256926953,
+   "seuil": "|z robuste| > 4",
+   "top": [
+    [
+     "2018-01-01 00:00:00",
+     129.4048,
+     16.086991985917354
+    ],
+    [
+     "2015-02-01 00:00:00",
+     116.3788,
+     10.47331503019701
+    ],
+    [
+     "1989-12-01 00:00:00",
+     84.1949,
+     9.182613660592697
+    ],
+    [
+     "2015-12-01 00:00:00",
+     103.2203,
+     -8.969090133612466
+    ],
+    [
+     "2014-01-01 00:00:00",
+     124.2549,
+     8.829216058730163
+    ]
+   ]
+  },
+  "adf": {
+   "stat": -2.256990350047242,
+   "p": 0.1862146911658687
+  },
+  "kpss": {
+   "stat": 3.5315970094994853,
+   "p": 0.01
+  },
+  "adf_diff1": {
+   "stat": -7.104890882267323,
+   "p": 4.0777865655391567e-10
+  },
+  "adf_diff_saison": {
+   "stat": -5.673482023381757,
+   "p": 8.812644938089106e-07
+  },
+  "kpss_diff1": {
+   "stat": 0.14518934657460816,
+   "p": 0.1
+  },
+  "corr_target": {},
+  "figures": [
+   [
+    "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\electric\\figures\\eda_serie.png",
+    "Évolution de la production et découpage chronologique 70/15/15."
+   ],
+   [
+    "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\electric\\figures\\eda_saison.png",
+    "Profil saisonnier annuel : une courbe par année."
+   ],
+   [
+    "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\electric\\figures\\eda_stl.png",
+    "Décomposition STL : tendance, saisonnalité, résidu."
+   ],
+   [
+    "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\electric\\figures\\eda_anomalies.png",
+    "Points atypiques détectés sur le résidu STL."
+   ],
+   [
+    "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\electric\\figures\\eda_acf_pacf.png",
+    "Autocorrélation (ACF) et autocorrélation partielle (PACF)."
+   ],
+   [
+    "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\electric\\figures\\eda_distributions.png",
+    "Histogramme et boîtes à moustaches par heure ou par mois."
+   ]
+  ]
+ },
+ "variants": {
+  "univarie": {
+   "use_exog": false,
+   "models": {
+    "ARIMA": {
+     "label": "SARIMA(0, 1, 2)x(1, 1, 1)[12]",
+     "params": {
+      "order": [
+       0,
+       1,
+       2
+      ],
+      "seasonal": [
+       1,
+       1,
+       1,
+       12
+      ],
+      "K": 0
+     },
+     "val": {
+      "n": 59,
+      "MAE": 3.0362138007711716,
+      "RMSE": 3.674177640166558,
+      "R2": 0.8457869379145069,
+      "R2_adj": 0.8343637481303963,
+      "p_params": 4,
+      "nRMSE": 0.03643461162941276,
+      "biais": -1.8103546154700723,
+      "p_pente": 1.5202784052318102e-77,
+      "p_MZ": 0.002612415484974231,
+      "pente": 1.0581117343075366,
+      "ordonnee": -7.775722433473401,
+      "p_LjungBox": 0.00028824258390647175
+     },
+     "test": {
+      "n": 61,
+      "MAE": 2.813823691188418,
+      "RMSE": 3.7347043591452485,
+      "R2": 0.8546905832394953,
+      "R2_adj": 0.8443113391851735,
+      "p_params": 4,
+      "nRMSE": 0.03618789259297109,
+      "biais": 0.2751093327773354,
+      "p_pente": 9.200557371384407e-112,
+      "p_MZ": 0.9008471863670785,
+      "pente": 1.003992837634354,
+      "ordonnee": -0.1358656052649066,
+      "p_LjungBox": 0.007778235503285583
+     },
+     "pi": {
+      "coverage": 0.8360655737704918,
+      "width": 10.600672464997166,
+      "type": "modèle"
+     },
+     "temps": {
+      "choix_s": 16.39142656326294,
+      "ajustement_s": 0.4679691791534424,
+      "prediction_s": 0.11332964897155762
+     },
+     "grille": [
+      {
+       "params": "SARIMA(0, 1, 0)x(0, 1, 0)[12]",
+       "val_RMSE": 4.68849196492163,
+       "temps_s": 0.058073997497558594,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(0, 1, 0)x(0, 1, 1)[12]",
+       "val_RMSE": 4.846596180913516,
+       "temps_s": 0.1663053035736084,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(0, 1, 0)x(1, 1, 0)[12]",
+       "val_RMSE": 5.128409105255368,
+       "temps_s": 0.11015105247497559,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(0, 1, 0)x(1, 1, 1)[12]",
+       "val_RMSE": 4.846535247829853,
+       "temps_s": 0.4173426628112793,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(0, 1, 1)x(0, 1, 0)[12]",
+       "val_RMSE": 4.479161777191744,
+       "temps_s": 0.07140731811523438,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(0, 1, 1)x(0, 1, 1)[12]",
+       "val_RMSE": 3.931395265655287,
+       "temps_s": 0.3066236972808838,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(0, 1, 1)x(1, 1, 0)[12]",
+       "val_RMSE": 4.230913950894747,
+       "temps_s": 0.16718602180480957,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(0, 1, 1)x(1, 1, 1)[12]",
+       "val_RMSE": 3.918245738717584,
+       "temps_s": 0.3215775489807129,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(0, 1, 2)x(0, 1, 0)[12]",
+       "val_RMSE": 4.166568627297619,
+       "temps_s": 0.12941884994506836,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(0, 1, 2)x(0, 1, 1)[12]",
+       "val_RMSE": 3.716643869193336,
+       "temps_s": 0.6647195816040039,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(0, 1, 2)x(1, 1, 0)[12]",
+       "val_RMSE": 4.009312576662263,
+       "temps_s": 0.3949100971221924,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(0, 1, 2)x(1, 1, 1)[12]",
+       "val_RMSE": 3.674177640166558,
+       "temps_s": 0.5578615665435791,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(1, 1, 0)x(0, 1, 0)[12]",
+       "val_RMSE": 4.773032681168505,
+       "temps_s": 0.047287940979003906,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(1, 1, 0)x(0, 1, 1)[12]",
+       "val_RMSE": 4.742448941397567,
+       "temps_s": 0.2701449394226074,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(1, 1, 0)x(1, 1, 0)[12]",
+       "val_RMSE": 4.99670887534073,
+       "temps_s": 0.14472079277038574,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(1, 1, 0)x(1, 1, 1)[12]",
+       "val_RMSE": 4.742404961633061,
+       "temps_s": 0.623443603515625,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(1, 1, 1)x(0, 1, 0)[12]",
+       "val_RMSE": 4.090456212691936,
+       "temps_s": 0.14378094673156738,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(1, 1, 1)x(0, 1, 1)[12]",
+       "val_RMSE": 4.092945127766726,
+       "temps_s": 0.47986316680908203,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(1, 1, 1)x(1, 1, 0)[12]",
+       "val_RMSE": 4.196705809646742,
+       "temps_s": 0.41831111907958984,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(1, 1, 1)x(1, 1, 1)[12]",
+       "val_RMSE": 4.094148598701086,
+       "temps_s": 1.1540765762329102,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(1, 1, 2)x(0, 1, 0)[12]",
+       "val_RMSE": 4.1009517559129,
+       "temps_s": 0.17930078506469727,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(1, 1, 2)x(0, 1, 1)[12]",
+       "val_RMSE": 3.905491969724916,
+       "temps_s": 0.6053581237792969,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(1, 1, 2)x(1, 1, 0)[12]",
+       "val_RMSE": 4.0788759348713555,
+       "temps_s": 0.39743924140930176,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(1, 1, 2)x(1, 1, 1)[12]",
+       "val_RMSE": 3.924627481003303,
+       "temps_s": 0.7280013561248779,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(2, 1, 0)x(0, 1, 0)[12]",
+       "val_RMSE": 4.512433428535501,
+       "temps_s": 0.07173013687133789,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(2, 1, 0)x(0, 1, 1)[12]",
+       "val_RMSE": 4.20020640590032,
+       "temps_s": 0.33429598808288574,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(2, 1, 0)x(1, 1, 0)[12]",
+       "val_RMSE": 4.4710347901201475,
+       "temps_s": 0.19843697547912598,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(2, 1, 0)x(1, 1, 1)[12]",
+       "val_RMSE": 4.200194187011298,
+       "temps_s": 0.5034241676330566,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(2, 1, 1)x(0, 1, 0)[12]",
+       "val_RMSE": 4.092112394778241,
+       "temps_s": 0.22440743446350098,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(2, 1, 1)x(0, 1, 1)[12]",
+       "val_RMSE": 3.9247825440908004,
+       "temps_s": 0.8836936950683594,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(2, 1, 1)x(1, 1, 0)[12]",
+       "val_RMSE": 4.154645837037535,
+       "temps_s": 0.8976142406463623,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(2, 1, 1)x(1, 1, 1)[12]",
+       "val_RMSE": 3.9260725302202424,
+       "temps_s": 1.9307136535644531,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(2, 1, 2)x(0, 1, 0)[12]",
+       "val_RMSE": 4.1023899151724965,
+       "temps_s": 0.22644495964050293,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(2, 1, 2)x(0, 1, 1)[12]",
+       "val_RMSE": 3.9647411200682483,
+       "temps_s": 0.6917638778686523,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(2, 1, 2)x(1, 1, 0)[12]",
+       "val_RMSE": 4.136379053935034,
+       "temps_s": 0.7486371994018555,
+       "erreur": ""
+      },
+      {
+       "params": "SARIMA(2, 1, 2)x(1, 1, 1)[12]",
+       "val_RMSE": 3.9935436823926094,
+       "temps_s": 1.1071035861968994,
+       "erreur": ""
+      }
+     ]
+    },
+    "Prophet": {
+     "label": "mode=multiplicative, changepoint_prior=0.5",
+     "params": {
+      "cps": 0.5,
+      "mode": "multiplicative"
+     },
+     "val": {
+      "n": 59,
+      "MAE": 4.974887960811942,
+      "RMSE": 6.031494364297301,
+      "R2": 0.5844237559108345,
+      "R2_adj": 0.3485561579142811,
+      "p_params": 21,
+      "nRMSE": 0.059810704933200246,
+      "biais": -4.673894374513635,
+      "p_pente": 1.4512273139935167e-36,
+      "p_MZ": 5.593678100800433e-08,
+      "pente": 1.033035977409056,
+      "ordonnee": -8.159750017112048,
+      "p_LjungBox": 2.0300482839339937e-05
+     },
+     "test": {
+      "n": 61,
+      "MAE": 2.7663733591064705,
+      "RMSE": 3.823269769725446,
+      "R2": 0.847717082620669,
+      "R2_adj": 0.7657185886471831,
+      "p_params": 21,
+      "nRMSE": 0.037046058396023325,
+      "biais": 1.8440163335957702,
+      "p_pente": 2.1246226373903405e-141,
+      "p_MZ": 0.00038119665562736624,
+      "pente": 1.121083561856287,
+      "ordonnee": -10.428908101155804,
+      "p_LjungBox": 0.005996187711990841
+     },
+     "pi": {
+      "coverage": 0.9344262295081968,
+      "width": 16.796156352167433,
+      "type": "modèle"
+     },
+     "temps": {
+      "choix_s": 1.2603065967559814,
+      "ajustement_s": 0.2189650535583496,
+      "prediction_s": 0.023001909255981445
+     },
+     "grille": [
+      {
+       "params": "mode=additive, changepoint_prior=0.01",
+       "val_RMSE": 7.971266191440453,
+       "temps_s": 0.3466634750366211,
+       "erreur": ""
+      },
+      {
+       "params": "mode=multiplicative, changepoint_prior=0.01",
+       "val_RMSE": 7.251001615955141,
+       "temps_s": 0.1690354347229004,
+       "erreur": ""
+      },
+      {
+       "params": "mode=additive, changepoint_prior=0.05",
+       "val_RMSE": 7.2654293779410875,
+       "temps_s": 0.15934276580810547,
+       "erreur": ""
+      },
+      {
+       "params": "mode=multiplicative, changepoint_prior=0.05",
+       "val_RMSE": 6.748130201660594,
+       "temps_s": 0.16105985641479492,
+       "erreur": ""
+      },
+      {
+       "params": "mode=additive, changepoint_prior=0.5",
+       "val_RMSE": 6.887469513691225,
+       "temps_s": 0.2032642364501953,
+       "erreur": ""
+      },
+      {
+       "params": "mode=multiplicative, changepoint_prior=0.5",
+       "val_RMSE": 6.031494364297301,
+       "temps_s": 0.21788239479064941,
+       "erreur": ""
+      }
+     ]
+    },
+    "XGBoost": {
+     "label": "profondeur=7, lr=0.1, cible=delta, arbres=40",
+     "params": {
+      "max_depth": 7,
+      "learning_rate": 0.1,
+      "target": "delta",
+      "n_estimators": 40
+     },
+     "val": {
+      "n": 59,
+      "MAE": 3.1385669168302557,
+      "RMSE": 3.9144621466285807,
+      "R2": 0.824956875663919,
+      "R2_adj": 0.7396794561155717,
+      "p_params": 19,
+      "nRMSE": 0.03881736867899081,
+      "biais": -1.580185542611348,
+      "p_pente": 2.71772764402798e-79,
+      "p_MZ": 0.15360703785825475,
+      "pente": 0.9430371970698133,
+      "ordonnee": 4.254129473536594,
+      "p_LjungBox": 0.0020376143583278944
+     },
+     "test": {
+      "n": 61,
+      "MAE": 3.4418779229540326,
+      "RMSE": 4.5565189956222625,
+      "R2": 0.7837044060378061,
+      "R2_adj": 0.6834698624943504,
+      "p_params": 19,
+      "nRMSE": 0.044150969971060584,
+      "biais": 1.3921948751636206,
+      "p_pente": 1.050649090017937e-137,
+      "p_MZ": 2.588359754774257e-05,
+      "pente": 0.9657853835084699,
+      "ordonnee": 4.875617519172434,
+      "p_LjungBox": 0.004949476676936373
+     },
+     "pi": {
+      "coverage": 0.9180327868852459,
+      "width": 14.213484391708334,
+      "type": "empirique (résidus de validation)"
+     },
+     "temps": {
+      "choix_s": 2.102344036102295,
+      "ajustement_s": 0.06399941444396973,
+      "prediction_s": 0.003999471664428711
+     },
+     "grille": [
+      {
+       "params": "profondeur=3, lr=0.03, cible=level, arbres=157",
+       "val_RMSE": 4.052749521426822,
+       "temps_s": 0.44547367095947266,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=3, lr=0.03, cible=delta, arbres=153",
+       "val_RMSE": 3.9677987094981617,
+       "temps_s": 0.1304926872253418,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=3, lr=0.1, cible=level, arbres=39",
+       "val_RMSE": 4.05020377855641,
+       "temps_s": 0.06647324562072754,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=3, lr=0.1, cible=delta, arbres=39",
+       "val_RMSE": 4.063162154744307,
+       "temps_s": 0.06399750709533691,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=5, lr=0.03, cible=level, arbres=166",
+       "val_RMSE": 4.405165455535104,
+       "temps_s": 0.19400238990783691,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=5, lr=0.03, cible=delta, arbres=98",
+       "val_RMSE": 3.987507491499443,
+       "temps_s": 0.13835525512695312,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=5, lr=0.1, cible=level, arbres=41",
+       "val_RMSE": 4.32712639833846,
+       "temps_s": 0.09729886054992676,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=5, lr=0.1, cible=delta, arbres=62",
+       "val_RMSE": 3.929635953605233,
+       "temps_s": 0.11178922653198242,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=7, lr=0.03, cible=level, arbres=248",
+       "val_RMSE": 4.464285990466842,
+       "temps_s": 0.39922213554382324,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=7, lr=0.03, cible=delta, arbres=90",
+       "val_RMSE": 4.065520177244188,
+       "temps_s": 0.1865098476409912,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=7, lr=0.1, cible=level, arbres=41",
+       "val_RMSE": 4.494090721429774,
+       "temps_s": 0.1364154815673828,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=7, lr=0.1, cible=delta, arbres=40",
+       "val_RMSE": 3.9144621466285807,
+       "temps_s": 0.12830877304077148,
+       "erreur": ""
+      }
+     ]
+    },
+    "LSTM": {
+     "label": "unités=32, cible=delta, fenêtre=24, epochs=120",
+     "params": {
+      "units": 32,
+      "target": "delta",
+      "epochs": 120
+     },
+     "val": {
+      "n": 59,
+      "MAE": 2.829936200261519,
+      "RMSE": 3.393252381542979,
+      "R2": 0.8684674662618616,
+      "R2_adj": 0.8612929644215994,
+      "p_params": 3,
+      "nRMSE": 0.03364884466405219,
+      "biais": -1.6817420430846128,
+      "p_pente": 1.1675932297462469e-150,
+      "p_MZ": 3.7436532889287087e-06,
+      "pente": 1.1227385091687445,
+      "ordonnee": -14.265483107429532,
+      "p_LjungBox": 0.13376553414458475
+     },
+     "test": {
+      "n": 61,
+      "MAE": 3.9475504488585424,
+      "RMSE": 4.97648593733483,
+      "R2": 0.7419957471274963,
+      "R2_adj": 0.7284165759236803,
+      "p_params": 3,
+      "nRMSE": 0.048220293033293865,
+      "biais": 2.037012583848296,
+      "p_pente": 2.940693934151578e-78,
+      "p_MZ": 0.000825206860813833,
+      "pente": 0.9437155178021096,
+      "ordonnee": 7.731096013602868,
+      "p_LjungBox": 3.766819044352724e-06
+     },
+     "pi": {
+      "coverage": 0.7704918032786885,
+      "width": 12.069938566894507,
+      "type": "empirique (résidus de validation)"
+     },
+     "temps": {
+      "choix_s": 52.23193860054016,
+      "ajustement_s": 7.66988468170166,
+      "prediction_s": 0.14627480506896973
+     },
+     "grille": [
+      {
+       "params": "unités=32, cible=level, fenêtre=24, epochs=124",
+       "val_RMSE": 4.238537548897053,
+       "temps_s": 17.721173763275146,
+       "erreur": ""
+      },
+      {
+       "params": "unités=32, cible=delta, fenêtre=24, epochs=120",
+       "val_RMSE": 3.393252381542979,
+       "temps_s": 13.256245374679565,
+       "erreur": ""
+      },
+      {
+       "params": "unités=64, cible=level, fenêtre=24, epochs=84",
+       "val_RMSE": 4.203025379565744,
+       "temps_s": 10.47364330291748,
+       "erreur": ""
+      },
+      {
+       "params": "unités=64, cible=delta, fenêtre=24, epochs=88",
+       "val_RMSE": 4.571038914372016,
+       "temps_s": 10.780876159667969,
+       "erreur": ""
+      }
+     ]
+    }
+   },
+   "figures": [
+    [
+     "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\electric\\figures\\prev_test_univarie.png",
+     "Valeurs réelles et prédites sur le jeu de test (univarie)."
+    ],
+    [
+     "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\electric\\figures\\intervalles_univarie.png",
+     "Intervalles de prédiction à 95 % (univarie)."
+    ],
+    [
+     "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\electric\\figures\\nuage_univarie.png",
+     "Prédit en fonction du réel (univarie)."
+    ],
+    [
+     "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\electric\\figures\\residus_univarie.png",
+     "Distribution des erreurs et erreur selon le pas (univarie)."
+    ],
+    [
+     "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\electric\\figures\\erreur_groupe_univarie.png",
+     "MAE selon l'heure ou le mois (univarie)."
+    ],
+    [
+     "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\electric\\figures\\barres_univarie.png",
+     "RMSE et MAE sur le jeu de test (univarie)."
+    ],
+    [
+     "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\electric\\figures\\lstm_loss_univarie.png",
+     "Courbe d'apprentissage du LSTM (univarie)."
+    ],
+    [
+     "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\electric\\figures\\xgb_importance_univarie.png",
+     "Importance des variables de XGBoost (univarie)."
+    ]
+   ],
+   "naif": {
+    "label": "valeur de la même saison (décalage 12)",
+    "val": {
+     "n": 59,
+     "MAE": 2.9484169491525414,
+     "RMSE": 3.665185706673916,
+     "R2": 0.8465408354709608,
+     "R2_adj": 0.8465408354709608,
+     "p_params": 0,
+     "nRMSE": 0.03634544402874469,
+     "biais": -0.45060338983050796,
+     "p_pente": 3.5131663954681323e-82,
+     "p_MZ": 0.28458292889894554,
+     "pente": 0.9237684684414617,
+     "ordonnee": 7.271167526662968,
+     "p_LjungBox": 0.00011251245500979886
+    },
+    "test": {
+     "n": 61,
+     "MAE": 3.281280327868853,
+     "RMSE": 4.466568705411788,
+     "R2": 0.7921599012879851,
+     "R2_adj": 0.7921599012879851,
+     "p_params": 0,
+     "nRMSE": 0.04327938520080364,
+     "biais": 0.6211885245901629,
+     "p_pente": 2.0049243843847025e-108,
+     "p_MZ": 0.011978521114611703,
+     "pente": 0.9360206910064807,
+     "ordonnee": 7.184311272776356,
+     "p_LjungBox": 0.042987143598341875
+    }
+   },
+   "best_val": "LSTM",
+   "best_test": "ARIMA",
+   "dm": {
+    "ARIMA": {
+     "Prophet": {
+      "stat": -0.1915271685610464,
+      "p": 0.8487592800568049
+     },
+     "XGBoost": {
+      "stat": -1.4802057895087395,
+      "p": 0.1440504036110002
+     },
+     "LSTM": {
+      "stat": -2.874436388670243,
+      "p": 0.005591927941709374
+     },
+     "Naïf saisonnier": {
+      "stat": -1.5246221794295434,
+      "p": 0.13260741682602917
+     }
+    },
+    "Prophet": {
+     "ARIMA": {
+      "stat": 0.1915271685610464,
+      "p": 0.8487592800568049
+     },
+     "XGBoost": {
+      "stat": -1.739140148102558,
+      "p": 0.08713860635560855
+     },
+     "LSTM": {
+      "stat": -2.875897618719407,
+      "p": 0.0055692756024825485
+     },
+     "Naïf saisonnier": {
+      "stat": -1.2461017810238717,
+      "p": 0.2175706223532996
+     }
+    },
+    "XGBoost": {
+     "ARIMA": {
+      "stat": 1.4802057895087395,
+      "p": 0.1440504036110002
+     },
+     "Prophet": {
+      "stat": 1.739140148102558,
+      "p": 0.08713860635560855
+     },
+     "LSTM": {
+      "stat": -0.7632275111570215,
+      "p": 0.44831833484326333
+     },
+     "Naïf saisonnier": {
+      "stat": 0.3062947087788017,
+      "p": 0.7604406180080441
+     }
+    },
+    "LSTM": {
+     "ARIMA": {
+      "stat": 2.874436388670243,
+      "p": 0.005591927941709374
+     },
+     "Prophet": {
+      "stat": 2.875897618719407,
+      "p": 0.0055692756024825485
+     },
+     "XGBoost": {
+      "stat": 0.7632275111570215,
+      "p": 0.44831833484326333
+     },
+     "Naïf saisonnier": {
+      "stat": 0.8039150704184221,
+      "p": 0.42461971017152433
+     }
+    },
+    "Naïf saisonnier": {
+     "ARIMA": {
+      "stat": 1.5246221794295434,
+      "p": 0.13260741682602917
+     },
+     "Prophet": {
+      "stat": 1.2461017810238717,
+      "p": 0.2175706223532996
+     },
+     "XGBoost": {
+      "stat": -0.3062947087788017,
+      "p": 0.7604406180080441
+     },
+     "LSTM": {
+      "stat": -0.8039150704184221,
+      "p": 0.42461971017152433
+     }
+    }
+   },
+   "erreurs": {
+    "ARIMA": {
+     "biais": 0.2751093327773354,
+     "erreur_max": 11.28106773548565,
+     "mae_par_groupe": {
+      "1": 4.85590535412008,
+      "2": 5.4937823829276935,
+      "3": 3.787765332844708,
+      "4": 1.5889839507738999,
+      "5": 0.7640724216089012,
+      "6": 1.11233502570106,
+      "7": 1.8952532598472345,
+      "8": 3.0158036187748563,
+      "9": 1.902755551485066,
+      "10": 0.7863242782989573,
+      "11": 3.247244413754447,
+      "12": 4.907242371537779
+     },
+     "groupe": "mois",
+     "mae_par_pas": {
+      "1": 4.85590535412008,
+      "2": 5.4937823829276935,
+      "3": 3.787765332844708,
+      "4": 1.5889839507738999,
+      "5": 0.7640724216089012,
+      "6": 1.11233502570106,
+      "7": 1.8952532598472345,
+      "8": 3.0158036187748563,
+      "9": 1.902755551485066,
+      "10": 0.7863242782989573,
+      "11": 3.247244413754447,
+      "12": 4.907242371537779
+     },
+     "pires": [
+      {
+       "date": "2017-02-01 00:00:00",
+       "reel": 99.4901,
+       "prevu": 110.77116773548565
+      },
+      {
+       "date": "2018-01-01 00:00:00",
+       "reel": 129.4048,
+       "prevu": 120.0386593255323
+      },
+      {
+       "date": "2015-12-01 00:00:00",
+       "reel": 103.2203,
+       "prevu": 111.15609059603405
+      },
+      {
+       "date": "2017-01-01 00:00:00",
+       "reel": 114.8505,
+       "prevu": 121.81884916439965
+      },
+      {
+       "date": "2015-02-01 00:00:00",
+       "reel": 116.3788,
+       "prevu": 109.86990346235103
+      }
+     ],
+     "part_hors_intervalle": 0.16393442622950816
+    },
+    "Prophet": {
+     "biais": 1.8440163335957702,
+     "erreur_max": 13.63146507929001,
+     "mae_par_groupe": {
+      "1": 4.698731977888623,
+      "2": 4.642720531739886,
+      "3": 3.1511380896736427,
+      "4": 1.0292405365889947,
+      "5": 0.9119779618353135,
+      "6": 2.562470263150473,
+      "7": 3.324239532497569,
+      "8": 2.138610363502539,
+      "9": 2.435778932655805,
+      "10": 1.0751981591091748,
+      "11": 2.8242144437981835,
+      "12": 4.015687793081011
+     },
+     "groupe": "mois",
+     "mae_par_pas": {
+      "1": 4.698731977888623,
+      "2": 4.642720531739886,
+      "3": 3.1511380896736427,
+      "4": 1.0292405365889947,
+      "5": 0.9119779618353135,
+      "6": 2.562470263150473,
+      "7": 3.324239532497569,
+      "8": 2.138610363502539,
+      "9": 2.435778932655805,
+      "10": 1.0751981591091748,
+      "11": 2.8242144437981835,
+      "12": 4.015687793081011
+     },
+     "pires": [
+      {
+       "date": "2018-01-01 00:00:00",
+       "reel": 129.4048,
+       "prevu": 115.77333492070998
+      },
+      {
+       "date": "2014-01-01 00:00:00",
+       "reel": 124.2549,
+       "prevu": 115.8165983914061
+      },
+      {
+       "date": "2015-02-01 00:00:00",
+       "reel": 116.3788,
+       "prevu": 108.07606226086011
+      },
+      {
+       "date": "2016-08-01 00:00:00",
+       "reel": 115.5159,
+       "prevu": 107.32976252224987
+      },
+      {
+       "date": "2017-02-01 00:00:00",
+       "reel": 99.4901,
+       "prevu": 106.83787393595884
+      }
+     ],
+     "part_hors_intervalle": 0.06557377049180324
+    },
+    "XGBoost": {
+     "biais": 1.3921948751636206,
+     "erreur_max": 17.108112265396116,
+     "mae_par_groupe": {
+      "1": 5.234131661891939,
+      "2": 5.9165426375102985,
+      "3": 5.2752406108856205,
+      "4": 1.2537494817066175,
+      "5": 1.3081214099669467,
+      "6": 2.3470824395883056,
+      "7": 3.2590150650787337,
+      "8": 4.166463531293869,
+      "9": 2.61427421310425,
+      "10": 1.0957498884296428,
+      "11": 3.2561375420475,
+      "12": 5.217575846157078
+     },
+     "groupe": "mois",
+     "mae_par_pas": {
+      "1": 5.234131661891939,
+      "2": 5.9165426375102985,
+      "3": 5.2752406108856205,
+      "4": 1.2537494817066175,
+      "5": 1.3081214099669467,
+      "6": 2.3470824395883056,
+      "7": 3.2590150650787337,
+      "8": 4.166463531293869,
+      "9": 2.61427421310425,
+      "10": 1.0957498884296428,
+      "11": 3.2561375420475,
+      "12": 5.217575846157078
+     },
+     "pires": [
+      {
+       "date": "2018-01-01 00:00:00",
+       "reel": 129.4048,
+       "prevu": 112.29668773460388
+      },
+      {
+       "date": "2016-12-01 00:00:00",
+       "reel": 112.7694,
+       "prevu": 102.7568235209465
+      },
+      {
+       "date": "2013-03-01 00:00:00",
+       "reel": 102.9948,
+       "prevu": 93.98034322710038
+      },
+      {
+       "date": "2016-08-01 00:00:00",
+       "reel": 115.5159,
+       "prevu": 107.26511958122254
+      },
+      {
+       "date": "2016-03-01 00:00:00",
+       "reel": 95.3548,
+       "prevu": 102.7585490852356
+      }
+     ],
+     "part_hors_intervalle": 0.08196721311475408
+    },
+    "LSTM": {
+     "biais": 2.037012583848296,
+     "erreur_max": 13.475371899414057,
+     "mae_par_groupe": {
+      "1": 6.731439300537109,
+      "2": 6.271281474609376,
+      "3": 3.662356333007813,
+      "4": 3.2700186718750017,
+      "5": 2.0164756372070314,
+      "6": 3.2276768188476552,
+      "7": 3.134654558105467,
+      "8": 4.371761699218749,
+      "9": 3.5434395336914095,
+      "10": 2.737754106445311,
+      "11": 2.542833896484376,
+      "12": 5.304135585937502
+     },
+     "groupe": "mois",
+     "mae_par_pas": {
+      "1": 6.731439300537109,
+      "2": 6.271281474609376,
+      "3": 3.662356333007813,
+      "4": 3.2700186718750017,
+      "5": 2.0164756372070314,
+      "6": 3.2276768188476552,
+      "7": 3.134654558105467,
+      "8": 4.371761699218749,
+      "9": 3.5434395336914095,
+      "10": 2.737754106445311,
+      "11": 2.542833896484376,
+      "12": 5.304135585937502
+     },
+     "pires": [
+      {
+       "date": "2018-01-01 00:00:00",
+       "reel": 129.4048,
+       "prevu": 115.92942810058594
+      },
+      {
+       "date": "2015-02-01 00:00:00",
+       "reel": 116.3788,
+       "prevu": 104.8942642211914
+      },
+      {
+       "date": "2017-02-01 00:00:00",
+       "reel": 99.4901,
+       "prevu": 110.34982299804688
+      },
+      {
+       "date": "2016-08-01 00:00:00",
+       "reel": 115.5159,
+       "prevu": 105.62947082519531
+      },
+      {
+       "date": "2016-12-01 00:00:00",
+       "reel": 112.7694,
+       "prevu": 104.59426879882812
+      }
+     ],
+     "part_hors_intervalle": 0.2295081967213115
+    }
+   },
+   "xgb_top": {
+    "moy_12": 0.15521810948848724,
+    "lag_36": 0.08006947487592697,
+    "lag_20": 0.070891372859478,
+    "lag_24": 0.06662575155496597,
+    "lag_18": 0.06391268968582153,
+    "moy_3": 0.06311386823654175,
+    "lag_23": 0.06152256950736046,
+    "month": 0.054784562438726425
+   },
+   "arima_aic": -265.2447005202836
+  }
+ },
+ "has_exog": false,
+ "exog_cols": [],
+ "duree_s": 84.11234641075134,
+ "fast_mode": false
+}

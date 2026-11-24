@@ -1,0 +1,2016 @@
+{
+ "key": "pv_weather",
+ "title": "Production photovoltaïque et météo (Zenodo)",
+ "unit": "W",
+ "freq": "h",
+ "period": 24,
+ "horizon": 24,
+ "info": {
+  "n_obs": 7080,
+  "n_obs_fichier": 7080,
+  "freq": "h",
+  "freq_label": "horaire",
+  "start": "2023-01-01 00:00:00",
+  "end": "2023-10-22 23:00:00",
+  "variables": [
+   "temperature",
+   "point_rosee",
+   "vent",
+   "pression",
+   "condition_meteo",
+   "rayonnement",
+   "cos_incidence_pv1",
+   "cos_incidence_pv2",
+   "cos_incidence_pv3",
+   "cos_incidence_pv4",
+   "cos_incidence_pv5",
+   "production"
+  ],
+  "n_missing_timestamps": 0,
+  "n_nan_target_apres_reindex": 0,
+  "n_interpolated": 0,
+  "n_invalid_target": 0,
+  "n_duplicates": 0,
+  "n_negative_clipped": 0,
+  "train_period": [
+   "2023-01-01 00:00:00",
+   "2023-07-26 11:00:00"
+  ],
+  "val_period": [
+   "2023-07-26 12:00:00",
+   "2023-09-08 17:00:00"
+  ],
+  "test_period": [
+   "2023-09-08 18:00:00",
+   "2023-10-22 23:00:00"
+  ],
+  "exog_cols": [
+   "temperature",
+   "point_rosee",
+   "vent",
+   "pression",
+   "condition_meteo",
+   "rayonnement",
+   "cos_incidence_pv1",
+   "cos_incidence_pv2",
+   "cos_incidence_pv3",
+   "cos_incidence_pv4",
+   "cos_incidence_pv5"
+  ]
+ },
+ "eda": {
+  "stats": {
+   "moyenne": 295.53474576271185,
+   "ecart_type": 412.6308687604586,
+   "min": 0.0,
+   "q25": 0.0,
+   "mediane": 0.0,
+   "q75": 584.5,
+   "max": 1398.0,
+   "asymetrie": 1.083032268991157,
+   "kurtosis": -0.37221766188594474,
+   "part_zeros": 0.5382768361581921
+  },
+  "stl": {
+   "force_tendance": 0.16352758156671943,
+   "force_saison": 0.8796490392017188,
+   "pente_par_an": 150.23951588989954,
+   "amplitude_saison": 1438.1821588338803,
+   "tendance_debut": 217.828603638922,
+   "tendance_fin": 326.7743419505619
+  },
+  "anomalies": {
+   "n": 2408,
+   "part": 0.34011299435028247,
+   "seuil": "|z robuste| > 4",
+   "top": [
+    [
+     "2023-02-15 13:00:00",
+     184.0,
+     -466.7315873158803
+    ],
+    [
+     "2023-01-30 12:00:00",
+     171.0,
+     -447.5698799432126
+    ],
+    [
+     "2023-01-30 11:00:00",
+     128.0,
+     -441.637826442461
+    ],
+    [
+     "2023-03-03 11:00:00",
+     223.0,
+     -436.65627281360884
+    ],
+    [
+     "2023-09-16 11:00:00",
+     54.0,
+     -436.00557503569587
+    ]
+   ]
+  },
+  "adf": {
+   "stat": -9.604904379586397,
+   "p": 1.877497549257548e-16
+  },
+  "kpss": {
+   "stat": 5.118333436291694,
+   "p": 0.01
+  },
+  "adf_diff1": {
+   "stat": -29.385422694552013,
+   "p": 0.0
+  },
+  "adf_diff_saison": {
+   "stat": -17.638102445853654,
+   "p": 3.770325508178563e-30
+  },
+  "kpss_diff1": {
+   "stat": 0.004176786024898094,
+   "p": 0.1
+  },
+  "corr_target": {
+   "rayonnement": 0.949701995206527,
+   "cos_incidence_pv1": 0.9101276276341955,
+   "cos_incidence_pv5": 0.9093913385598319,
+   "cos_incidence_pv4": 0.8961861816183215,
+   "cos_incidence_pv3": 0.864861194852586,
+   "cos_incidence_pv2": 0.8172631558030318,
+   "point_rosee": -0.4083604577124755,
+   "temperature": 0.31894364096305816,
+   "vent": 0.15371614195068944,
+   "pression": 0.0697029315274753,
+   "condition_meteo": 0.044899798348906284
+  },
+  "figures": [
+   [
+    "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\pv_weather\\figures\\eda_serie.png",
+    "Évolution de la production et découpage chronologique 70/15/15."
+   ],
+   [
+    "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\pv_weather\\figures\\eda_zoom.png",
+    "Zoom sur deux semaines (cycle jour/nuit)."
+   ],
+   [
+    "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\pv_weather\\figures\\eda_stl.png",
+    "Décomposition STL : tendance, saisonnalité, résidu."
+   ],
+   [
+    "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\pv_weather\\figures\\eda_anomalies.png",
+    "Points atypiques détectés sur le résidu STL."
+   ],
+   [
+    "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\pv_weather\\figures\\eda_acf_pacf.png",
+    "Autocorrélation (ACF) et autocorrélation partielle (PACF)."
+   ],
+   [
+    "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\pv_weather\\figures\\eda_distributions.png",
+    "Histogramme et boîtes à moustaches par heure ou par mois."
+   ],
+   [
+    "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\pv_weather\\figures\\eda_mois.png",
+    "Production moyenne par mois présent dans les données."
+   ],
+   [
+    "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\pv_weather\\figures\\eda_corr.png",
+    "Corrélations entre la production et les variables explicatives."
+   ]
+  ]
+ },
+ "variants": {
+  "sans_exog": {
+   "use_exog": false,
+   "models": {
+    "ARIMA": {
+     "label": "ARIMA(1, 0, 0) + Fourier(K=6)",
+     "params": {
+      "order": [
+       1,
+       0,
+       0
+      ],
+      "seasonal": [
+       0,
+       0,
+       0,
+       0
+      ],
+      "K": 6
+     },
+     "val": {
+      "n": 1062,
+      "MAE": 76.00853320034592,
+      "RMSE": 122.73338889910455,
+      "R2": 0.9233423610604587,
+      "R2_adj": 0.9223173305493283,
+      "p_params": 14,
+      "nRMSE": 0.352350371997624,
+      "biais": 29.846188669730413,
+      "p_pente": 0.0,
+      "p_MZ": 5.188552135822359e-17,
+      "pente": 1.131465853729783,
+      "ordonnee": -12.02325296049472,
+      "p_LjungBox": 0.0
+     },
+     "test": {
+      "n": 1062,
+      "MAE": 94.37269768044308,
+      "RMSE": 166.20925176440474,
+      "R2": 0.853014555221343,
+      "R2_adj": 0.851049133801189,
+      "p_params": 14,
+      "nRMSE": 0.5481620981078219,
+      "biais": 11.044236547108527,
+      "p_pente": 8.237506422723719e-138,
+      "p_MZ": 7.254028972213382e-12,
+      "pente": 1.0953739968484268,
+      "ordonnee": -16.820957871591922,
+      "p_LjungBox": 0.0
+     },
+     "pi": {
+      "coverage": 0.9510357815442562,
+      "width": 467.68765577430287,
+      "type": "modèle"
+     },
+     "temps": {
+      "choix_s": 20.835228443145752,
+      "ajustement_s": 1.507016897201538,
+      "prediction_s": 1.162330150604248
+     },
+     "grille": [
+      {
+       "params": "ARIMA(1, 0, 0) + Fourier(K=3)",
+       "val_RMSE": 129.9166972023117,
+       "temps_s": 3.391751289367676,
+       "erreur": ""
+      },
+      {
+       "params": "ARIMA(1, 0, 0) + Fourier(K=6)",
+       "val_RMSE": 122.73338889910455,
+       "temps_s": 2.327300548553467,
+       "erreur": ""
+      },
+      {
+       "params": "ARIMA(2, 0, 0) + Fourier(K=3)",
+       "val_RMSE": 134.62989578154205,
+       "temps_s": 1.7024855613708496,
+       "erreur": ""
+      },
+      {
+       "params": "ARIMA(2, 0, 0) + Fourier(K=6)",
+       "val_RMSE": 124.73785659320839,
+       "temps_s": 2.2607784271240234,
+       "erreur": ""
+      },
+      {
+       "params": "ARIMA(1, 0, 1) + Fourier(K=3)",
+       "val_RMSE": 132.598055347426,
+       "temps_s": 1.936793565750122,
+       "erreur": ""
+      },
+      {
+       "params": "ARIMA(1, 0, 1) + Fourier(K=6)",
+       "val_RMSE": 123.88664640944839,
+       "temps_s": 2.626232862472534,
+       "erreur": ""
+      },
+      {
+       "params": "ARIMA(2, 0, 1) + Fourier(K=3)",
+       "val_RMSE": 133.26500735165348,
+       "temps_s": 2.7268147468566895,
+       "erreur": ""
+      },
+      {
+       "params": "ARIMA(2, 0, 1) + Fourier(K=6)",
+       "val_RMSE": 124.13221205133964,
+       "temps_s": 3.8630714416503906,
+       "erreur": ""
+      }
+     ]
+    },
+    "Prophet": {
+     "label": "mode=multiplicative, changepoint_prior=0.01",
+     "params": {
+      "cps": 0.01,
+      "mode": "multiplicative"
+     },
+     "val": {
+      "n": 1062,
+      "MAE": 58.55124629062598,
+      "RMSE": 105.38341294140929,
+      "R2": 0.9434835979876285,
+      "R2_adj": 0.9430000926472185,
+      "p_params": 9,
+      "nRMSE": 0.3025410207063523,
+      "biais": 8.646435058123696,
+      "p_pente": 0.0,
+      "p_MZ": 0.0006765187050296421,
+      "pente": 1.0414558258383664,
+      "ordonnee": -5.43533162264304,
+      "p_LjungBox": 0.0
+     },
+     "test": {
+      "n": 1062,
+      "MAE": 91.09628544555709,
+      "RMSE": 185.1728650167159,
+      "R2": 0.8175606004362813,
+      "R2_adj": 0.8159998070940062,
+      "p_params": 9,
+      "nRMSE": 0.6107045493717677,
+      "biais": -68.92245564158969,
+      "p_pente": 2.9637275736651063e-143,
+      "p_MZ": 6.279951538352672e-50,
+      "pente": 0.8812702148957303,
+      "ordonnee": -24.739027792323284,
+      "p_LjungBox": 0.0
+     },
+     "pi": {
+      "coverage": 0.9340866290018832,
+      "width": 463.88213720610725,
+      "type": "modèle"
+     },
+     "temps": {
+      "choix_s": 3.7771151065826416,
+      "ajustement_s": 0.3681318759918213,
+      "prediction_s": 0.05701637268066406
+     },
+     "grille": [
+      {
+       "params": "mode=additive, changepoint_prior=0.01",
+       "val_RMSE": 129.30577840175783,
+       "temps_s": 0.45295190811157227,
+       "erreur": ""
+      },
+      {
+       "params": "mode=multiplicative, changepoint_prior=0.01",
+       "val_RMSE": 105.38341294140929,
+       "temps_s": 0.4360501766204834,
+       "erreur": ""
+      },
+      {
+       "params": "mode=additive, changepoint_prior=0.05",
+       "val_RMSE": 129.69642057071303,
+       "temps_s": 0.47762107849121094,
+       "erreur": ""
+      },
+      {
+       "params": "mode=multiplicative, changepoint_prior=0.05",
+       "val_RMSE": 133.0416223128431,
+       "temps_s": 0.4268929958343506,
+       "erreur": ""
+      },
+      {
+       "params": "mode=additive, changepoint_prior=0.5",
+       "val_RMSE": 144.75738433453284,
+       "temps_s": 0.9546220302581787,
+       "erreur": ""
+      },
+      {
+       "params": "mode=multiplicative, changepoint_prior=0.5",
+       "val_RMSE": 149.2358781964643,
+       "temps_s": 1.027324914932251,
+       "erreur": ""
+      }
+     ]
+    },
+    "XGBoost": {
+     "label": "profondeur=7, lr=0.1, cible=delta, arbres=29",
+     "params": {
+      "max_depth": 7,
+      "learning_rate": 0.1,
+      "target": "delta",
+      "n_estimators": 29
+     },
+     "val": {
+      "n": 1062,
+      "MAE": 40.9652100776352,
+      "RMSE": 94.88138161750982,
+      "R2": 0.9541866566419303,
+      "R2_adj": 0.9526238232915087,
+      "p_params": 35,
+      "nRMSE": 0.27239115947544745,
+      "biais": 1.6587272665959742,
+      "p_pente": 0.0,
+      "p_MZ": 0.9469266697185365,
+      "pente": 1.004113601164211,
+      "ordonnee": 0.23266944416174473,
+      "p_LjungBox": 1.698422243076759e-112
+     },
+     "test": {
+      "n": 1062,
+      "MAE": 68.32425280000923,
+      "RMSE": 156.99403282613574,
+      "R2": 0.8688614934690199,
+      "R2_adj": 0.8643879576711794,
+      "p_params": 35,
+      "nRMSE": 0.5177700850634175,
+      "biais": -8.401274655428198,
+      "p_pente": 5.437196782784513e-192,
+      "p_MZ": 0.2032468190171425,
+      "pente": 0.9600255470308717,
+      "ordonnee": 4.055290116576128,
+      "p_LjungBox": 5.322319680848747e-246
+     },
+     "pi": {
+      "coverage": 0.8870056497175142,
+      "width": 291.0648152218276,
+      "type": "empirique (résidus de validation)"
+     },
+     "temps": {
+      "choix_s": 5.043706178665161,
+      "ajustement_s": 0.15417265892028809,
+      "prediction_s": 0.006018161773681641
+     },
+     "grille": [
+      {
+       "params": "profondeur=3, lr=0.03, cible=level, arbres=376",
+       "val_RMSE": 97.78441897030561,
+       "temps_s": 0.44111061096191406,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=3, lr=0.03, cible=delta, arbres=326",
+       "val_RMSE": 96.1142847679862,
+       "temps_s": 0.6342225074768066,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=3, lr=0.1, cible=level, arbres=115",
+       "val_RMSE": 99.70655644005993,
+       "temps_s": 0.19100093841552734,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=3, lr=0.1, cible=delta, arbres=86",
+       "val_RMSE": 96.00477003355618,
+       "temps_s": 0.16499948501586914,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=5, lr=0.03, cible=level, arbres=215",
+       "val_RMSE": 98.0817742715656,
+       "temps_s": 0.47510647773742676,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=5, lr=0.03, cible=delta, arbres=143",
+       "val_RMSE": 95.95326360743847,
+       "temps_s": 0.3567187786102295,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=5, lr=0.1, cible=level, arbres=45",
+       "val_RMSE": 98.09509442294494,
+       "temps_s": 0.18651294708251953,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=5, lr=0.1, cible=delta, arbres=28",
+       "val_RMSE": 96.60884517133208,
+       "temps_s": 0.16020941734313965,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=7, lr=0.03, cible=level, arbres=156",
+       "val_RMSE": 100.28625749755562,
+       "temps_s": 0.8352501392364502,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=7, lr=0.03, cible=delta, arbres=121",
+       "val_RMSE": 96.53326511959423,
+       "temps_s": 0.7659482955932617,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=7, lr=0.1, cible=level, arbres=53",
+       "val_RMSE": 102.05007424939744,
+       "temps_s": 0.4248061180114746,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=7, lr=0.1, cible=delta, arbres=29",
+       "val_RMSE": 94.88138161750982,
+       "temps_s": 0.4058222770690918,
+       "erreur": ""
+      }
+     ]
+    },
+    "LSTM": {
+     "label": "unités=64, cible=delta, fenêtre=72, epochs=22",
+     "params": {
+      "units": 64,
+      "target": "delta",
+      "epochs": 22
+     },
+     "val": {
+      "n": 1062,
+      "MAE": 56.6268535980397,
+      "RMSE": 103.38357371981797,
+      "R2": 0.945608245509161,
+      "R2_adj": 0.9452470099480264,
+      "p_params": 7,
+      "nRMSE": 0.2967997623577997,
+      "biais": -4.254852567913393,
+      "p_pente": 0.0,
+      "p_MZ": 1.8354631877607683e-10,
+      "pente": 1.0289667369666653,
+      "ordonnee": -14.468018152587097,
+      "p_LjungBox": 1.556007718836063e-158
+     },
+     "test": {
+      "n": 1062,
+      "MAE": 95.49168423295245,
+      "RMSE": 180.50071579769144,
+      "R2": 0.8266508170327396,
+      "R2_adj": 0.8254995416240386,
+      "p_params": 7,
+      "nRMSE": 0.5952956892067299,
+      "biais": -11.708455130654315,
+      "p_pente": 1.0438025257399454e-136,
+      "p_MZ": 0.5969898669297982,
+      "pente": 0.9826380208264203,
+      "ordonnee": -6.240815101508552,
+      "p_LjungBox": 0.0
+     },
+     "pi": {
+      "coverage": 0.8700564971751412,
+      "width": 300.92904223425893,
+      "type": "empirique (résidus de validation)"
+     },
+     "temps": {
+      "choix_s": 211.55956482887268,
+      "ajustement_s": 31.013345956802368,
+      "prediction_s": 0.148834228515625
+     },
+     "grille": [
+      {
+       "params": "unités=32, cible=level, fenêtre=72, epochs=32",
+       "val_RMSE": 119.79899494862052,
+       "temps_s": 58.27144813537598,
+       "erreur": ""
+      },
+      {
+       "params": "unités=32, cible=delta, fenêtre=72, epochs=36",
+       "val_RMSE": 113.50461020983128,
+       "temps_s": 60.102495193481445,
+       "erreur": ""
+      },
+      {
+       "params": "unités=64, cible=level, fenêtre=72, epochs=6",
+       "val_RMSE": 114.680390603207,
+       "temps_s": 35.817782402038574,
+       "erreur": ""
+      },
+      {
+       "params": "unités=64, cible=delta, fenêtre=72, epochs=22",
+       "val_RMSE": 103.38357371981797,
+       "temps_s": 57.3668417930603,
+       "erreur": ""
+      }
+     ]
+    }
+   },
+   "figures": [
+    [
+     "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\pv_weather\\figures\\prev_test_sans_exog.png",
+     "Valeurs réelles et prédites sur le jeu de test (sans_exog)."
+    ],
+    [
+     "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\pv_weather\\figures\\intervalles_sans_exog.png",
+     "Intervalles de prédiction à 95 % (sans_exog)."
+    ],
+    [
+     "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\pv_weather\\figures\\nuage_sans_exog.png",
+     "Prédit en fonction du réel (sans_exog)."
+    ],
+    [
+     "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\pv_weather\\figures\\residus_sans_exog.png",
+     "Distribution des erreurs et erreur selon le pas (sans_exog)."
+    ],
+    [
+     "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\pv_weather\\figures\\erreur_groupe_sans_exog.png",
+     "MAE selon l'heure ou le mois (sans_exog)."
+    ],
+    [
+     "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\pv_weather\\figures\\barres_sans_exog.png",
+     "RMSE et MAE sur le jeu de test (sans_exog)."
+    ],
+    [
+     "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\pv_weather\\figures\\lstm_loss_sans_exog.png",
+     "Courbe d'apprentissage du LSTM (sans_exog)."
+    ],
+    [
+     "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\pv_weather\\figures\\xgb_importance_sans_exog.png",
+     "Importance des variables de XGBoost (sans_exog)."
+    ]
+   ],
+   "naif": {
+    "label": "valeur de la même saison (décalage 24)",
+    "val": {
+     "n": 1062,
+     "MAE": 42.65065913370998,
+     "RMSE": 111.7934308733777,
+     "R2": 0.9363992033040516,
+     "R2_adj": 0.9363992033040516,
+     "p_params": 0,
+     "nRMSE": 0.3209432845328422,
+     "biais": 0.010357815442561206,
+     "p_pente": 0.0,
+     "p_MZ": 0.004859224559471551,
+     "pente": 0.9688561053649628,
+     "ordonnee": 10.858315909727235,
+     "p_LjungBox": 2.2955977156489186e-206
+    },
+    "test": {
+     "n": 1062,
+     "MAE": 74.97269303201507,
+     "RMSE": 190.28726672973337,
+     "R2": 0.8073436189320293,
+     "R2_adj": 0.8073436189320293,
+     "p_params": 0,
+     "nRMSE": 0.6275719688674513,
+     "biais": -0.4529190207156309,
+     "p_pente": 2.9360094900297753e-196,
+     "p_MZ": 0.00016526451113535727,
+     "pente": 0.9037385081612974,
+     "ordonnee": 28.778306050891498,
+     "p_LjungBox": 0.0
+    }
+   },
+   "best_val": "XGBoost",
+   "best_test": "XGBoost",
+   "dm": {
+    "ARIMA": {
+     "Prophet": {
+      "stat": -1.4169519743989887,
+      "p": 0.15679052295234386
+     },
+     "XGBoost": {
+      "stat": 1.048822127183215,
+      "p": 0.2944988375924653
+     },
+     "LSTM": {
+      "stat": -1.1730295724018636,
+      "p": 0.24104722551496982
+     },
+     "Naïf saisonnier": {
+      "stat": -1.211862842901989,
+      "p": 0.22583469627111752
+     }
+    },
+    "Prophet": {
+     "ARIMA": {
+      "stat": 1.4169519743989887,
+      "p": 0.15679052295234386
+     },
+     "XGBoost": {
+      "stat": 2.2248851186657697,
+      "p": 0.02629863482055561
+     },
+     "LSTM": {
+      "stat": 0.37734840412546505,
+      "p": 0.7059901698740145
+     },
+     "Naïf saisonnier": {
+      "stat": -0.2351537439876424,
+      "p": 0.8141347827473662
+     }
+    },
+    "XGBoost": {
+     "ARIMA": {
+      "stat": -1.048822127183215,
+      "p": 0.2944988375924653
+     },
+     "Prophet": {
+      "stat": -2.2248851186657697,
+      "p": 0.02629863482055561
+     },
+     "LSTM": {
+      "stat": -1.8894171962113637,
+      "p": 0.05910840912697868
+     },
+     "Naïf saisonnier": {
+      "stat": -2.124917900110119,
+      "p": 0.03382409995091584
+     }
+    },
+    "LSTM": {
+     "ARIMA": {
+      "stat": 1.1730295724018636,
+      "p": 0.24104722551496982
+     },
+     "Prophet": {
+      "stat": -0.37734840412546505,
+      "p": 0.7059901698740145
+     },
+     "XGBoost": {
+      "stat": 1.8894171962113637,
+      "p": 0.05910840912697868
+     },
+     "Naïf saisonnier": {
+      "stat": -0.4786572350264529,
+      "p": 0.6322811143634572
+     }
+    },
+    "Naïf saisonnier": {
+     "ARIMA": {
+      "stat": 1.211862842901989,
+      "p": 0.22583469627111752
+     },
+     "Prophet": {
+      "stat": 0.2351537439876424,
+      "p": 0.8141347827473662
+     },
+     "XGBoost": {
+      "stat": 2.124917900110119,
+      "p": 0.03382409995091584
+     },
+     "LSTM": {
+      "stat": 0.4786572350264529,
+      "p": 0.6322811143634572
+     }
+    }
+   },
+   "erreurs": {
+    "ARIMA": {
+     "biais": 11.044236547108527,
+     "erreur_max": 902.6391343039581,
+     "mae_par_groupe": {
+      "0": 3.2360458239847505,
+      "1": 2.8250953240246908,
+      "2": 1.168600973594698,
+      "3": 1.558931116325752,
+      "4": 2.6349498436308414,
+      "5": 0.04928802289696496,
+      "6": 8.062839426646963,
+      "7": 98.68160297636467,
+      "8": 200.0585544993274,
+      "9": 218.06599813342484,
+      "10": 234.133260403049,
+      "11": 246.1726909735661,
+      "12": 265.81925184088027,
+      "13": 257.01437422404365,
+      "14": 236.766649765515,
+      "15": 197.00447425926401,
+      "16": 157.52461571916396,
+      "17": 80.29370462340091,
+      "18": 39.092670887942624,
+      "19": 8.025578853278406,
+      "20": 5.248463314377798,
+      "21": 6.085514632070169,
+      "22": 4.160873677037925,
+      "23": 2.6465454546251928
+     },
+     "groupe": "heure",
+     "mae_par_pas": {
+      "1": 39.092670887942624,
+      "2": 8.025578853278406,
+      "3": 5.248463314377798,
+      "4": 6.085514632070169,
+      "5": 4.160873677037925,
+      "6": 2.6465454546251928,
+      "7": 3.2360458239847505,
+      "8": 2.8250953240246908,
+      "9": 1.168600973594698,
+      "10": 1.558931116325752,
+      "11": 2.6349498436308414,
+      "12": 0.04928802289696496,
+      "13": 8.062839426646963,
+      "14": 98.68160297636467,
+      "15": 200.0585544993274,
+      "16": 218.06599813342484,
+      "17": 234.133260403049,
+      "18": 246.1726909735661,
+      "19": 265.81925184088027,
+      "20": 257.01437422404365,
+      "21": 236.766649765515,
+      "22": 197.00447425926401,
+      "23": 157.52461571916396,
+      "24": 80.29370462340091
+     },
+     "pires": [
+      {
+       "date": "2023-09-16 11:00:00",
+       "reel": 54.0,
+       "prevu": 956.6391343039581
+      },
+      {
+       "date": "2023-09-16 10:00:00",
+       "reel": 58.0,
+       "prevu": 892.3150118660167
+      },
+      {
+       "date": "2023-09-16 12:00:00",
+       "reel": 141.0,
+       "prevu": 945.3573677843334
+      },
+      {
+       "date": "2023-09-23 13:00:00",
+       "reel": 140.0,
+       "prevu": 895.6512630436395
+      },
+      {
+       "date": "2023-10-17 11:00:00",
+       "reel": 215.0,
+       "prevu": 958.4271999528385
+      }
+     ],
+     "part_hors_intervalle": 0.048964218455743835
+    },
+    "Prophet": {
+     "biais": -68.92245564158969,
+     "erreur_max": 1134.2846186140907,
+     "mae_par_groupe": {
+      "0": 0.0,
+      "1": 0.0,
+      "2": 19.545070627624003,
+      "3": 23.762703456963926,
+      "4": 0.0,
+      "5": 0.0,
+      "6": 23.438844404668735,
+      "7": 164.13486925127933,
+      "8": 249.46310308800045,
+      "9": 203.55012810315054,
+      "10": 186.9134115768058,
+      "11": 164.12786665292552,
+      "12": 167.58135154529808,
+      "13": 192.00986865906253,
+      "14": 192.03079587902732,
+      "15": 192.34595288557995,
+      "16": 170.29602191209668,
+      "17": 128.6872246942573,
+      "18": 84.57315321060577,
+      "19": 0.0,
+      "20": 0.0,
+      "21": 13.782369113046881,
+      "22": 19.80487284890404,
+      "23": 0.0
+     },
+     "groupe": "heure",
+     "mae_par_pas": {
+      "1": 84.57315321060577,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 13.782369113046881,
+      "5": 19.80487284890404,
+      "6": 0.0,
+      "7": 0.0,
+      "8": 0.0,
+      "9": 19.545070627624003,
+      "10": 23.762703456963926,
+      "11": 0.0,
+      "12": 0.0,
+      "13": 23.438844404668735,
+      "14": 164.13486925127933,
+      "15": 249.46310308800045,
+      "16": 203.55012810315054,
+      "17": 186.9134115768058,
+      "18": 164.12786665292552,
+      "19": 167.58135154529808,
+      "20": 192.00986865906253,
+      "21": 192.03079587902732,
+      "22": 192.34595288557995,
+      "23": 170.29602191209668,
+      "24": 128.6872246942573
+     },
+     "pires": [
+      {
+       "date": "2023-09-16 11:00:00",
+       "reel": 54.0,
+       "prevu": 1188.2846186140907
+      },
+      {
+       "date": "2023-09-16 12:00:00",
+       "reel": 141.0,
+       "prevu": 1175.5715588011522
+      },
+      {
+       "date": "2023-10-17 11:00:00",
+       "reel": 215.0,
+       "prevu": 1246.539953746242
+      },
+      {
+       "date": "2023-09-16 10:00:00",
+       "reel": 58.0,
+       "prevu": 1082.6908858363818
+      },
+      {
+       "date": "2023-09-23 13:00:00",
+       "reel": 140.0,
+       "prevu": 1098.2327638928195
+      }
+     ],
+     "part_hors_intervalle": 0.06591337099811678
+    },
+    "XGBoost": {
+     "biais": -8.401274655428198,
+     "erreur_max": 1028.2881469726562,
+     "mae_par_groupe": {
+      "0": 0.6068706424398855,
+      "1": 0.6068706424398855,
+      "2": 0.6068706424398855,
+      "3": 0.6068706424398855,
+      "4": 0.6068706424398855,
+      "5": 0.6068706424398855,
+      "6": 0.6068706424398855,
+      "7": 50.385880784554914,
+      "8": 148.05533307248896,
+      "9": 184.2599414830858,
+      "10": 176.93748479268768,
+      "11": 168.82515067403966,
+      "12": 172.6461155035279,
+      "13": 183.48220966417682,
+      "14": 189.61381695487282,
+      "15": 167.39544347199526,
+      "16": 130.08512127399445,
+      "17": 69.35300481319427,
+      "18": 0.7547903585765097,
+      "19": 0.5943850671251615,
+      "20": 0.5943850671251615,
+      "21": 0.5943850671251615,
+      "22": 0.5943850671251615,
+      "23": 0.5943850671251615
+     },
+     "groupe": "heure",
+     "mae_par_pas": {
+      "1": 0.7547903585765097,
+      "2": 0.5943850671251615,
+      "3": 0.5943850671251615,
+      "4": 0.5943850671251615,
+      "5": 0.5943850671251615,
+      "6": 0.5943850671251615,
+      "7": 0.6068706424398855,
+      "8": 0.6068706424398855,
+      "9": 0.6068706424398855,
+      "10": 0.6068706424398855,
+      "11": 0.6068706424398855,
+      "12": 0.6068706424398855,
+      "13": 0.6068706424398855,
+      "14": 50.385880784554914,
+      "15": 148.05533307248896,
+      "16": 184.2599414830858,
+      "17": 176.93748479268768,
+      "18": 168.82515067403966,
+      "19": 172.6461155035279,
+      "20": 183.48220966417682,
+      "21": 189.61381695487282,
+      "22": 167.39544347199526,
+      "23": 130.08512127399445,
+      "24": 69.35300481319427
+     },
+     "pires": [
+      {
+       "date": "2023-09-16 11:00:00",
+       "reel": 54.0,
+       "prevu": 1082.2881469726562
+      },
+      {
+       "date": "2023-09-16 10:00:00",
+       "reel": 58.0,
+       "prevu": 991.5280609130859
+      },
+      {
+       "date": "2023-10-17 11:00:00",
+       "reel": 215.0,
+       "prevu": 1136.1259536743164
+      },
+      {
+       "date": "2023-09-22 09:00:00",
+       "reel": 164.0,
+       "prevu": 1040.7090854644775
+      },
+      {
+       "date": "2023-10-17 13:00:00",
+       "reel": 270.0,
+       "prevu": 1136.3367528915405
+      }
+     ],
+     "part_hors_intervalle": 0.11299435028248583
+    },
+    "LSTM": {
+     "biais": -11.708455130654315,
+     "erreur_max": 991.6551513671875,
+     "mae_par_groupe": {
+      "0": 25.41064591841264,
+      "1": 13.061460321599787,
+      "2": 19.538951873779297,
+      "3": 14.854163083163174,
+      "4": 34.316138527610086,
+      "5": 1.9619605324485085,
+      "6": 26.924604589288887,
+      "7": 93.74395821311258,
+      "8": 175.88263147527522,
+      "9": 239.93321817571467,
+      "10": 233.35715796730736,
+      "11": 220.83722270618784,
+      "12": 219.97105477072975,
+      "13": 215.65099265358666,
+      "14": 214.80002316561612,
+      "15": 181.1205607327548,
+      "16": 137.50786278464577,
+      "17": 69.76155853271484,
+      "18": 50.783203803168405,
+      "19": 17.077997504340278,
+      "20": 9.844259643554688,
+      "21": 25.525947740342882,
+      "22": 17.40495334201389,
+      "23": 41.8584235297309
+     },
+     "groupe": "heure",
+     "mae_par_pas": {
+      "1": 50.783203803168405,
+      "2": 17.077997504340278,
+      "3": 9.844259643554688,
+      "4": 25.525947740342882,
+      "5": 17.40495334201389,
+      "6": 41.8584235297309,
+      "7": 25.41064591841264,
+      "8": 13.061460321599787,
+      "9": 19.538951873779297,
+      "10": 14.854163083163174,
+      "11": 34.316138527610086,
+      "12": 1.9619605324485085,
+      "13": 26.924604589288887,
+      "14": 93.74395821311258,
+      "15": 175.88263147527522,
+      "16": 239.93321817571467,
+      "17": 233.35715796730736,
+      "18": 220.83722270618784,
+      "19": 219.97105477072975,
+      "20": 215.65099265358666,
+      "21": 214.80002316561612,
+      "22": 181.1205607327548,
+      "23": 137.50786278464577,
+      "24": 69.76155853271484
+     },
+     "pires": [
+      {
+       "date": "2023-09-23 13:00:00",
+       "reel": 140.0,
+       "prevu": 1131.6551513671875
+      },
+      {
+       "date": "2023-09-16 12:00:00",
+       "reel": 141.0,
+       "prevu": 1093.705322265625
+      },
+      {
+       "date": "2023-09-23 14:00:00",
+       "reel": 82.0,
+       "prevu": 1017.5921630859375
+      },
+      {
+       "date": "2023-09-16 11:00:00",
+       "reel": 54.0,
+       "prevu": 978.5238037109375
+      },
+      {
+       "date": "2023-10-19 10:00:00",
+       "reel": 1087.0,
+       "prevu": 166.0119171142578
+      }
+     ],
+     "part_hors_intervalle": 0.12994350282485878
+    }
+   },
+   "xgb_top": {
+    "hour": 0.13329142332077026,
+    "lag_168": 0.059247344732284546,
+    "lag_72": 0.05344819277524948,
+    "doy": 0.048723604530096054,
+    "lag_24": 0.04641953110694885,
+    "lag_48": 0.045058734714984894,
+    "moy_168": 0.0410323292016983,
+    "moy_24": 0.04032064229249954
+   },
+   "arima_aic": 503.35839868020133
+  },
+  "avec_exog": {
+   "use_exog": true,
+   "models": {
+    "ARIMA": {
+     "label": "ARIMA(1, 0, 0) + Fourier(K=6)",
+     "params": {
+      "order": [
+       1,
+       0,
+       0
+      ],
+      "seasonal": [
+       0,
+       0,
+       0,
+       0
+      ],
+      "K": 6
+     },
+     "val": {
+      "n": 1062,
+      "MAE": 38.841202111158175,
+      "RMSE": 62.81649418039884,
+      "R2": 0.9799193680694588,
+      "R2_adj": 0.9794347968356136,
+      "p_params": 25,
+      "nRMSE": 0.1803373579967333,
+      "biais": -7.745893372069577,
+      "p_pente": 0.0,
+      "p_MZ": 1.0921726816324794e-19,
+      "pente": 1.0180409947200348,
+      "ordonnee": -14.169814894452013,
+      "p_LjungBox": 3.037027555068397e-160
+     },
+     "test": {
+      "n": 1062,
+      "MAE": 53.654185696460665,
+      "RMSE": 85.6853918937258,
+      "R2": 0.9609359275411424,
+      "R2_adj": 0.9599932616999538,
+      "p_params": 25,
+      "nRMSE": 0.28259247724809644,
+      "biais": 3.4443163986001117,
+      "p_pente": 0.0,
+      "p_MZ": 6.573061536992175e-31,
+      "pente": 1.0846307046399213,
+      "ordonnee": -21.925222417513332,
+      "p_LjungBox": 6.6930715315901175e-236
+     },
+     "pi": {
+      "coverage": 0.9397363465160076,
+      "width": 263.4243037247303,
+      "type": "modèle"
+     },
+     "temps": {
+      "choix_s": 124.67684674263,
+      "ajustement_s": 18.361372709274292,
+      "prediction_s": 1.4224004745483398
+     },
+     "grille": [
+      {
+       "params": "ARIMA(1, 0, 0) + Fourier(K=3)",
+       "val_RMSE": 67.07645228151513,
+       "temps_s": 12.953435897827148,
+       "erreur": ""
+      },
+      {
+       "params": "ARIMA(1, 0, 0) + Fourier(K=6)",
+       "val_RMSE": 62.81649418039884,
+       "temps_s": 16.506419897079468,
+       "erreur": ""
+      },
+      {
+       "params": "ARIMA(2, 0, 0) + Fourier(K=3)",
+       "val_RMSE": 67.19364886263865,
+       "temps_s": 13.509068489074707,
+       "erreur": ""
+      },
+      {
+       "params": "ARIMA(2, 0, 0) + Fourier(K=6)",
+       "val_RMSE": 62.96509807975975,
+       "temps_s": 17.96862530708313,
+       "erreur": ""
+      },
+      {
+       "params": "ARIMA(1, 0, 1) + Fourier(K=3)",
+       "val_RMSE": 67.21143661199062,
+       "temps_s": 12.731977224349976,
+       "erreur": ""
+      },
+      {
+       "params": "ARIMA(1, 0, 1) + Fourier(K=6)",
+       "val_RMSE": 62.96162539265038,
+       "temps_s": 17.5851948261261,
+       "erreur": ""
+      },
+      {
+       "params": "ARIMA(2, 0, 1) + Fourier(K=3)",
+       "val_RMSE": 67.28473751888527,
+       "temps_s": 15.025013446807861,
+       "erreur": ""
+      },
+      {
+       "params": "ARIMA(2, 0, 1) + Fourier(K=6)",
+       "val_RMSE": 62.94079384801442,
+       "temps_s": 18.395114183425903,
+       "erreur": ""
+      }
+     ]
+    },
+    "Prophet": {
+     "label": "mode=additive, changepoint_prior=0.01",
+     "params": {
+      "cps": 0.01,
+      "mode": "additive"
+     },
+     "val": {
+      "n": 1062,
+      "MAE": 39.836762894588496,
+      "RMSE": 65.79296147823483,
+      "R2": 0.9779713005643527,
+      "R2_adj": 0.9775480786731778,
+      "p_params": 20,
+      "nRMSE": 0.18888237878560296,
+      "biais": -16.474899619695154,
+      "p_pente": 0.0,
+      "p_MZ": 2.1589481370058877e-13,
+      "pente": 0.97857713022061,
+      "ordonnee": -8.659781383855615,
+      "p_LjungBox": 1.9274799619515586e-85
+     },
+     "test": {
+      "n": 1062,
+      "MAE": 45.80542040186453,
+      "RMSE": 73.45503749021482,
+      "R2": 0.9712917240872417,
+      "R2_adj": 0.9707401721965067,
+      "p_params": 20,
+      "nRMSE": 0.24225647513472562,
+      "biais": -2.8909268662748757,
+      "p_pente": 0.0,
+      "p_MZ": 6.644763863317155e-17,
+      "pente": 1.0498664299900748,
+      "ordonnee": -18.1551802770591,
+      "p_LjungBox": 1.0363897969143913e-120
+     },
+     "pi": {
+      "coverage": 0.9519774011299436,
+      "width": 250.00793639111237,
+      "type": "modèle"
+     },
+     "temps": {
+      "choix_s": 8.824164390563965,
+      "ajustement_s": 0.6636631488800049,
+      "prediction_s": 0.07616662979125977
+     },
+     "grille": [
+      {
+       "params": "mode=additive, changepoint_prior=0.01",
+       "val_RMSE": 65.79296147823483,
+       "temps_s": 0.6893930435180664,
+       "erreur": ""
+      },
+      {
+       "params": "mode=multiplicative, changepoint_prior=0.01",
+       "val_RMSE": 96.21392920065145,
+       "temps_s": 0.8135924339294434,
+       "erreur": ""
+      },
+      {
+       "params": "mode=additive, changepoint_prior=0.05",
+       "val_RMSE": 65.91923110233903,
+       "temps_s": 0.777064323425293,
+       "erreur": ""
+      },
+      {
+       "params": "mode=multiplicative, changepoint_prior=0.05",
+       "val_RMSE": 97.41702410106926,
+       "temps_s": 1.0921294689178467,
+       "erreur": ""
+      },
+      {
+       "params": "mode=additive, changepoint_prior=0.5",
+       "val_RMSE": 69.92743169523143,
+       "temps_s": 2.379932165145874,
+       "erreur": ""
+      },
+      {
+       "params": "mode=multiplicative, changepoint_prior=0.5",
+       "val_RMSE": 97.635228162159,
+       "temps_s": 3.070051670074463,
+       "erreur": ""
+      }
+     ]
+    },
+    "XGBoost": {
+     "label": "profondeur=5, lr=0.03, cible=level, arbres=371",
+     "params": {
+      "max_depth": 5,
+      "learning_rate": 0.03,
+      "target": "level",
+      "n_estimators": 371
+     },
+     "val": {
+      "n": 1062,
+      "MAE": 21.316628059930046,
+      "RMSE": 46.78719688681492,
+      "R2": 0.9888600295261922,
+      "R2_adj": 0.9883551638692512,
+      "p_params": 46,
+      "nRMSE": 0.1343194902028456,
+      "biais": 0.7427188161964021,
+      "p_pente": 0.0,
+      "p_MZ": 3.314248623468661e-09,
+      "pente": 1.0128507340468011,
+      "ordonnee": -3.7240031251102756,
+      "p_LjungBox": 2.719865030549909e-93
+     },
+     "test": {
+      "n": 1062,
+      "MAE": 30.031302537139428,
+      "RMSE": 63.18966652107829,
+      "R2": 0.9787550326048507,
+      "R2_adj": 0.9777922064963022,
+      "p_params": 46,
+      "nRMSE": 0.20840103550929978,
+      "biais": 15.304156882872563,
+      "p_pente": 0.0,
+      "p_MZ": 7.954971979699262e-09,
+      "pente": 1.0365575370592253,
+      "ordonnee": 4.778960195430749,
+      "p_LjungBox": 4.033273915474499e-118
+     },
+     "pi": {
+      "coverage": 0.8804143126177024,
+      "width": 133.0353387089099,
+      "type": "empirique (résidus de validation)"
+     },
+     "temps": {
+      "choix_s": 11.376071453094482,
+      "ajustement_s": 0.6273574829101562,
+      "prediction_s": 0.007753849029541016
+     },
+     "grille": [
+      {
+       "params": "profondeur=3, lr=0.03, cible=level, arbres=481",
+       "val_RMSE": 51.48440671149015,
+       "temps_s": 0.6417453289031982,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=3, lr=0.03, cible=delta, arbres=993",
+       "val_RMSE": 49.796940383589636,
+       "temps_s": 1.2304141521453857,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=3, lr=0.1, cible=level, arbres=399",
+       "val_RMSE": 50.346801249819435,
+       "temps_s": 0.5299463272094727,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=3, lr=0.1, cible=delta, arbres=216",
+       "val_RMSE": 50.279692169335505,
+       "temps_s": 0.3471982479095459,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=5, lr=0.03, cible=level, arbres=371",
+       "val_RMSE": 46.78719688681492,
+       "temps_s": 0.8546671867370605,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=5, lr=0.03, cible=delta, arbres=540",
+       "val_RMSE": 48.620326696348464,
+       "temps_s": 1.2402842044830322,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=5, lr=0.1, cible=level, arbres=117",
+       "val_RMSE": 47.77410960098689,
+       "temps_s": 0.3584156036376953,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=5, lr=0.1, cible=delta, arbres=71",
+       "val_RMSE": 50.952698782884084,
+       "temps_s": 0.27254199981689453,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=7, lr=0.03, cible=level, arbres=221",
+       "val_RMSE": 46.80376151308322,
+       "temps_s": 1.3770461082458496,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=7, lr=0.03, cible=delta, arbres=596",
+       "val_RMSE": 51.03910907067602,
+       "temps_s": 3.00073504447937,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=7, lr=0.1, cible=level, arbres=75",
+       "val_RMSE": 48.44855365933176,
+       "temps_s": 0.6322691440582275,
+       "erreur": ""
+      },
+      {
+       "params": "profondeur=7, lr=0.1, cible=delta, arbres=138",
+       "val_RMSE": 52.54814595872828,
+       "temps_s": 0.8888089656829834,
+       "erreur": ""
+      }
+     ]
+    },
+    "LSTM": {
+     "label": "unités=64, cible=delta, fenêtre=72, epochs=37",
+     "params": {
+      "units": 64,
+      "target": "delta",
+      "epochs": 37
+     },
+     "val": {
+      "n": 1062,
+      "MAE": 42.6507745660182,
+      "RMSE": 65.01944825930886,
+      "R2": 0.978486228759704,
+      "R2_adj": 0.97811494603456,
+      "p_params": 18,
+      "nRMSE": 0.1866617306565295,
+      "biais": -14.300125179542212,
+      "p_pente": 0.0,
+      "p_MZ": 4.779375517136148e-08,
+      "pente": 0.9959317797644714,
+      "ordonnee": -12.824875389835459,
+      "p_LjungBox": 1.730473023719288e-92
+     },
+     "test": {
+      "n": 1062,
+      "MAE": 44.394977045149005,
+      "RMSE": 79.14107600580124,
+      "R2": 0.9666751776136074,
+      "R2_adj": 0.9661000608322508,
+      "p_params": 18,
+      "nRMSE": 0.2610091665134449,
+      "biais": -1.486145809769855,
+      "p_pente": 0.0,
+      "p_MZ": 1.8022162765361425e-10,
+      "pente": 1.0347076478072743,
+      "ordonnee": -12.061497035943251,
+      "p_LjungBox": 3.700868641788982e-85
+     },
+     "pi": {
+      "coverage": 0.9218455743879472,
+      "width": 183.5606870719492,
+      "type": "empirique (résidus de validation)"
+     },
+     "temps": {
+      "choix_s": 227.90528202056885,
+      "ajustement_s": 51.74313306808472,
+      "prediction_s": 0.1493852138519287
+     },
+     "grille": [
+      {
+       "params": "unités=32, cible=level, fenêtre=72, epochs=51",
+       "val_RMSE": 66.87504725364947,
+       "temps_s": 68.42223882675171,
+       "erreur": ""
+      },
+      {
+       "params": "unités=32, cible=delta, fenêtre=72, epochs=23",
+       "val_RMSE": 67.06853830724351,
+       "temps_s": 39.983142375946045,
+       "erreur": ""
+      },
+      {
+       "params": "unités=64, cible=level, fenêtre=72, epochs=22",
+       "val_RMSE": 71.2238732424371,
+       "temps_s": 51.46344518661499,
+       "erreur": ""
+      },
+      {
+       "params": "unités=64, cible=delta, fenêtre=72, epochs=37",
+       "val_RMSE": 65.01944825930886,
+       "temps_s": 68.03545188903809,
+       "erreur": ""
+      }
+     ]
+    }
+   },
+   "figures": [
+    [
+     "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\pv_weather\\figures\\prev_test_avec_exog.png",
+     "Valeurs réelles et prédites sur le jeu de test (avec_exog)."
+    ],
+    [
+     "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\pv_weather\\figures\\intervalles_avec_exog.png",
+     "Intervalles de prédiction à 95 % (avec_exog)."
+    ],
+    [
+     "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\pv_weather\\figures\\nuage_avec_exog.png",
+     "Prédit en fonction du réel (avec_exog)."
+    ],
+    [
+     "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\pv_weather\\figures\\residus_avec_exog.png",
+     "Distribution des erreurs et erreur selon le pas (avec_exog)."
+    ],
+    [
+     "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\pv_weather\\figures\\erreur_groupe_avec_exog.png",
+     "MAE selon l'heure ou le mois (avec_exog)."
+    ],
+    [
+     "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\pv_weather\\figures\\barres_avec_exog.png",
+     "RMSE et MAE sur le jeu de test (avec_exog)."
+    ],
+    [
+     "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\pv_weather\\figures\\lstm_loss_avec_exog.png",
+     "Courbe d'apprentissage du LSTM (avec_exog)."
+    ],
+    [
+     "C:\\Users\\pc\\Downloads\\energy_forecasting_project\\energy_forecasting\\outputs\\pv_weather\\figures\\xgb_importance_avec_exog.png",
+     "Importance des variables de XGBoost (avec_exog)."
+    ]
+   ],
+   "naif": {
+    "label": "valeur de la même saison (décalage 24)",
+    "val": {
+     "n": 1062,
+     "MAE": 42.65065913370998,
+     "RMSE": 111.7934308733777,
+     "R2": 0.9363992033040516,
+     "R2_adj": 0.9363992033040516,
+     "p_params": 0,
+     "nRMSE": 0.3209432845328422,
+     "biais": 0.010357815442561206,
+     "p_pente": 0.0,
+     "p_MZ": 0.004859224559471551,
+     "pente": 0.9688561053649628,
+     "ordonnee": 10.858315909727235,
+     "p_LjungBox": 2.2955977156489186e-206
+    },
+    "test": {
+     "n": 1062,
+     "MAE": 74.97269303201507,
+     "RMSE": 190.28726672973337,
+     "R2": 0.8073436189320293,
+     "R2_adj": 0.8073436189320293,
+     "p_params": 0,
+     "nRMSE": 0.6275719688674513,
+     "biais": -0.4529190207156309,
+     "p_pente": 2.9360094900297753e-196,
+     "p_MZ": 0.00016526451113535727,
+     "pente": 0.9037385081612974,
+     "ordonnee": 28.778306050891498,
+     "p_LjungBox": 0.0
+    }
+   },
+   "best_val": "XGBoost",
+   "best_test": "XGBoost",
+   "dm": {
+    "ARIMA": {
+     "Prophet": {
+      "stat": 6.313476818109072,
+      "p": 4.003584130884974e-10
+     },
+     "XGBoost": {
+      "stat": 4.838157175151,
+      "p": 1.5043650356538762e-06
+     },
+     "LSTM": {
+      "stat": 1.428843758252457,
+      "p": 0.15334347203322363
+     },
+     "Naïf saisonnier": {
+      "stat": -3.7577194967674163,
+      "p": 0.00018080745871529302
+     }
+    },
+    "Prophet": {
+     "ARIMA": {
+      "stat": -6.313476818109072,
+      "p": 4.003584130884974e-10
+     },
+     "XGBoost": {
+      "stat": 2.686529063805809,
+      "p": 0.007332675727425464
+     },
+     "LSTM": {
+      "stat": -1.3670306091136148,
+      "p": 0.17190527101369213
+     },
+     "Naïf saisonnier": {
+      "stat": -3.973080807227224,
+      "p": 7.574159431089633e-05
+     }
+    },
+    "XGBoost": {
+     "ARIMA": {
+      "stat": -4.838157175151,
+      "p": 1.5043650356538762e-06
+     },
+     "Prophet": {
+      "stat": -2.686529063805809,
+      "p": 0.007332675727425464
+     },
+     "LSTM": {
+      "stat": -2.8104497643493027,
+      "p": 0.005038223908592432
+     },
+     "Naïf saisonnier": {
+      "stat": -4.091963280444041,
+      "p": 4.601504330148387e-05
+     }
+    },
+    "LSTM": {
+     "ARIMA": {
+      "stat": -1.428843758252457,
+      "p": 0.15334347203322363
+     },
+     "Prophet": {
+      "stat": 1.3670306091136148,
+      "p": 0.17190527101369213
+     },
+     "XGBoost": {
+      "stat": 2.8104497643493027,
+      "p": 0.005038223908592432
+     },
+     "Naïf saisonnier": {
+      "stat": -3.9962392237994866,
+      "p": 6.880341062043271e-05
+     }
+    },
+    "Naïf saisonnier": {
+     "ARIMA": {
+      "stat": 3.7577194967674163,
+      "p": 0.00018080745871529302
+     },
+     "Prophet": {
+      "stat": 3.973080807227224,
+      "p": 7.574159431089633e-05
+     },
+     "XGBoost": {
+      "stat": 4.091963280444041,
+      "p": 4.601504330148387e-05
+     },
+     "LSTM": {
+      "stat": 3.9962392237994866,
+      "p": 6.880341062043271e-05
+     }
+    }
+   },
+   "erreurs": {
+    "ARIMA": {
+     "biais": 3.4443163986001117,
+     "erreur_max": 411.1039880848746,
+     "mae_par_groupe": {
+      "0": 15.263774011168946,
+      "1": 16.410906784583673,
+      "2": 8.86408965666962,
+      "3": 9.037900683189251,
+      "4": 18.346778948982895,
+      "5": 12.578314527373822,
+      "6": 1.4972048059901646,
+      "7": 50.524662855390375,
+      "8": 135.33335534726996,
+      "9": 124.56399207776185,
+      "10": 114.91407511214692,
+      "11": 103.37493705289859,
+      "12": 98.22160333393212,
+      "13": 105.13925362511385,
+      "14": 114.04759844190085,
+      "15": 113.1424734111704,
+      "16": 97.50308432079466,
+      "17": 41.71225936408612,
+      "18": 36.13550334812734,
+      "19": 14.128750726436525,
+      "20": 17.93502667687602,
+      "21": 21.046465759929823,
+      "22": 13.461025454139465,
+      "23": 9.288551985214472
+     },
+     "groupe": "heure",
+     "mae_par_pas": {
+      "1": 36.13550334812734,
+      "2": 14.128750726436525,
+      "3": 17.93502667687602,
+      "4": 21.046465759929823,
+      "5": 13.461025454139465,
+      "6": 9.288551985214472,
+      "7": 15.263774011168946,
+      "8": 16.410906784583673,
+      "9": 8.86408965666962,
+      "10": 9.037900683189251,
+      "11": 18.346778948982895,
+      "12": 12.578314527373822,
+      "13": 1.4972048059901646,
+      "14": 50.524662855390375,
+      "15": 135.33335534726996,
+      "16": 124.56399207776185,
+      "17": 114.91407511214692,
+      "18": 103.37493705289859,
+      "19": 98.22160333393212,
+      "20": 105.13925362511385,
+      "21": 114.04759844190085,
+      "22": 113.1424734111704,
+      "23": 97.50308432079466,
+      "24": 41.71225936408612
+     },
+     "pires": [
+      {
+       "date": "2023-09-21 08:00:00",
+       "reel": 860.0,
+       "prevu": 448.8960119151254
+      },
+      {
+       "date": "2023-10-01 08:00:00",
+       "reel": 780.0,
+       "prevu": 433.9027004303871
+      },
+      {
+       "date": "2023-10-17 11:00:00",
+       "reel": 215.0,
+       "prevu": 547.9433435559077
+      },
+      {
+       "date": "2023-09-16 11:00:00",
+       "reel": 54.0,
+       "prevu": 377.3351682482101
+      },
+      {
+       "date": "2023-10-17 14:00:00",
+       "reel": 142.0,
+       "prevu": 460.28641378624985
+      }
+     ],
+     "part_hors_intervalle": 0.06026365348399243
+    },
+    "Prophet": {
+     "biais": -2.8909268662748757,
+     "erreur_max": 399.5429171999627,
+     "mae_par_groupe": {
+      "0": 7.8304408727402794,
+      "1": 6.286400578039281,
+      "2": 13.477946484983844,
+      "3": 23.531304438652896,
+      "4": 19.285213311222062,
+      "5": 4.590975322136701,
+      "6": 0.2762945326255019,
+      "7": 60.003570918357475,
+      "8": 126.26401829255173,
+      "9": 115.12641154977882,
+      "10": 96.36162826305359,
+      "11": 70.26876603939954,
+      "12": 65.94795974539244,
+      "13": 83.55007209204679,
+      "14": 83.81718288959114,
+      "15": 99.03019092585372,
+      "16": 89.93873491345775,
+      "17": 39.95375987526623,
+      "18": 29.15740850905935,
+      "19": 7.0494742994127035,
+      "20": 6.954751992595095,
+      "21": 15.463997873361693,
+      "22": 22.448824405364018,
+      "23": 16.73794604895249
+     },
+     "groupe": "heure",
+     "mae_par_pas": {
+      "1": 29.15740850905935,
+      "2": 7.0494742994127035,
+      "3": 6.954751992595095,
+      "4": 15.463997873361693,
+      "5": 22.448824405364018,
+      "6": 16.73794604895249,
+      "7": 7.8304408727402794,
+      "8": 6.286400578039281,
+      "9": 13.477946484983844,
+      "10": 23.531304438652896,
+      "11": 19.285213311222062,
+      "12": 4.590975322136701,
+      "13": 0.2762945326255019,
+      "14": 60.003570918357475,
+      "15": 126.26401829255173,
+      "16": 115.12641154977882,
+      "17": 96.36162826305359,
+      "18": 70.26876603939954,
+      "19": 65.94795974539244,
+      "20": 83.55007209204679,
+      "21": 83.81718288959114,
+      "22": 99.03019092585372,
+      "23": 89.93873491345775,
+      "24": 39.95375987526623
+     },
+     "pires": [
+      {
+       "date": "2023-09-21 08:00:00",
+       "reel": 860.0,
+       "prevu": 460.4570828000373
+      },
+      {
+       "date": "2023-10-01 08:00:00",
+       "reel": 780.0,
+       "prevu": 444.40437050586337
+      },
+      {
+       "date": "2023-09-21 09:00:00",
+       "reel": 1059.0,
+       "prevu": 753.8496372946925
+      },
+      {
+       "date": "2023-10-17 14:00:00",
+       "reel": 142.0,
+       "prevu": 428.9247212855059
+      },
+      {
+       "date": "2023-10-17 11:00:00",
+       "reel": 215.0,
+       "prevu": 490.4689740742736
+      }
+     ],
+     "part_hors_intervalle": 0.04802259887005644
+    },
+    "XGBoost": {
+     "biais": 15.304156882872563,
+     "erreur_max": 528.3518676757812,
+     "mae_par_groupe": {
+      "0": 0.04077825610610572,
+      "1": 0.033954466100443496,
+      "2": 0.029676369306716053,
+      "3": 0.020482971756295723,
+      "4": 0.01702314428985119,
+      "5": 0.02244141981513663,
+      "6": 0.023211240556768396,
+      "7": 19.80918789502572,
+      "8": 96.00927248868075,
+      "9": 102.13169860839844,
+      "10": 42.08418074521151,
+      "11": 42.3041261326183,
+      "12": 70.50260370427912,
+      "13": 65.49126607721502,
+      "14": 66.53191618485884,
+      "15": 85.22796873612837,
+      "16": 100.38397806340998,
+      "17": 31.6555988505398,
+      "18": 1.365571771024002,
+      "19": 0.6397675464550654,
+      "20": 0.23547888807952405,
+      "21": 0.12382872559958034,
+      "22": 0.06353827632135815,
+      "23": 0.04273076703151067
+     },
+     "groupe": "heure",
+     "mae_par_pas": {
+      "1": 1.365571771024002,
+      "2": 0.6397675464550654,
+      "3": 0.23547888807952405,
+      "4": 0.12382872559958034,
+      "5": 0.06353827632135815,
+      "6": 0.04273076703151067,
+      "7": 0.04077825610610572,
+      "8": 0.033954466100443496,
+      "9": 0.029676369306716053,
+      "10": 0.020482971756295723,
+      "11": 0.01702314428985119,
+      "12": 0.02244141981513663,
+      "13": 0.023211240556768396,
+      "14": 19.80918789502572,
+      "15": 96.00927248868075,
+      "16": 102.13169860839844,
+      "17": 42.08418074521151,
+      "18": 42.3041261326183,
+      "19": 70.50260370427912,
+      "20": 65.49126607721502,
+      "21": 66.53191618485884,
+      "22": 85.22796873612837,
+      "23": 100.38397806340998,
+      "24": 31.6555988505398
+     },
+     "pires": [
+      {
+       "date": "2023-09-21 08:00:00",
+       "reel": 860.0,
+       "prevu": 331.64813232421875
+      },
+      {
+       "date": "2023-10-01 08:00:00",
+       "reel": 780.0,
+       "prevu": 360.6045837402344
+      },
+      {
+       "date": "2023-10-12 08:00:00",
+       "reel": 590.0,
+       "prevu": 242.85733032226562
+      },
+      {
+       "date": "2023-09-21 16:00:00",
+       "reel": 249.0,
+       "prevu": 546.0105590820312
+      },
+      {
+       "date": "2023-09-21 07:00:00",
+       "reel": 404.0,
+       "prevu": 109.4933090209961
+      }
+     ],
+     "part_hors_intervalle": 0.11958568738229758
+    },
+    "LSTM": {
+     "biais": -1.486145809769855,
+     "erreur_max": 447.76202392578125,
+     "mae_par_groupe": {
+      "0": 10.940957156094639,
+      "1": 26.60694191672585,
+      "2": 16.25531734119762,
+      "3": 12.315168900923295,
+      "4": 17.968453840775922,
+      "5": 7.408853357488459,
+      "6": 7.975433002818715,
+      "7": 46.20116285844283,
+      "8": 94.84598575938831,
+      "9": 111.29329577359286,
+      "10": 70.17532313953747,
+      "11": 84.83778658780184,
+      "12": 85.17992817271839,
+      "13": 88.56293556906961,
+      "14": 92.48153963955966,
+      "15": 91.24938201904297,
+      "16": 81.80290360884233,
+      "17": 56.75710782137784,
+      "18": 18.659792073567708,
+      "19": 10.51805691189236,
+      "20": 7.552084350585938,
+      "21": 4.690752495659722,
+      "22": 9.242620171440972,
+      "23": 16.485419718424478
+     },
+     "groupe": "heure",
+     "mae_par_pas": {
+      "1": 18.659792073567708,
+      "2": 10.51805691189236,
+      "3": 7.552084350585938,
+      "4": 4.690752495659722,
+      "5": 9.242620171440972,
+      "6": 16.485419718424478,
+      "7": 10.940957156094639,
+      "8": 26.60694191672585,
+      "9": 16.25531734119762,
+      "10": 12.315168900923295,
+      "11": 17.968453840775922,
+      "12": 7.408853357488459,
+      "13": 7.975433002818715,
+      "14": 46.20116285844283,
+      "15": 94.84598575938831,
+      "16": 111.29329577359286,
+      "17": 70.17532313953747,
+      "18": 84.83778658780184,
+      "19": 85.17992817271839,
+      "20": 88.56293556906961,
+      "21": 92.48153963955966,
+      "22": 91.24938201904297,
+      "23": 81.80290360884233,
+      "24": 56.75710782137784
+     },
+     "pires": [
+      {
+       "date": "2023-09-21 08:00:00",
+       "reel": 860.0,
+       "prevu": 412.23797607421875
+      },
+      {
+       "date": "2023-10-18 12:00:00",
+       "reel": 941.0,
+       "prevu": 507.87396240234375
+      },
+      {
+       "date": "2023-10-01 08:00:00",
+       "reel": 780.0,
+       "prevu": 373.46942138671875
+      },
+      {
+       "date": "2023-10-19 14:00:00",
+       "reel": 1014.0,
+       "prevu": 632.4110717773438
+      },
+      {
+       "date": "2023-10-17 11:00:00",
+       "reel": 215.0,
+       "prevu": 577.3375244140625
+      }
+     ],
+     "part_hors_intervalle": 0.07815442561205277
+    }
+   },
+   "xgb_top": {
+    "x_rayonnement": 0.4274972379207611,
+    "x_cos_incidence_pv1": 0.159194678068161,
+    "x_cos_incidence_pv5": 0.10853635519742966,
+    "x_cos_incidence_pv4": 0.0958205834031105,
+    "x_condition_meteo": 0.03705141320824623,
+    "hour": 0.027267366647720337,
+    "month": 0.017114123329520226,
+    "x_cos_incidence_pv3": 0.012844277545809746
+   },
+   "arima_aic": -3916.773499156205
+  }
+ },
+ "has_exog": true,
+ "exog_cols": [
+  "temperature",
+  "point_rosee",
+  "vent",
+  "pression",
+  "condition_meteo",
+  "rayonnement",
+  "cos_incidence_pv1",
+  "cos_incidence_pv2",
+  "cos_incidence_pv3",
+  "cos_incidence_pv4",
+  "cos_incidence_pv5"
+ ],
+ "duree_s": 731.4913778305054,
+ "fast_mode": false
+}
